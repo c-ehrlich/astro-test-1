@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro'
+const unsortedPosts = await Astro.glob('./blog/*.md')
+const posts = unsortedPosts.sort((a, b) => {
+  return (
+    new Date(b.frontmatter.publishedDate).valueOf() - new Date(a.frontmatter.publishedDate).valueOf()
+  )
+})
+---
+
+<Layout title='Blog'>
+  <div>
+    <h1>blog</h1>
+    {
+    posts.map(post => (
+    <div>{post.frontmatter.title}</div>
+    ))
+    }
+  </div>
+</Layout>

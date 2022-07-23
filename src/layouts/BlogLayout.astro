@@ -1,0 +1,14 @@
+---
+import Layout from './Layout.astro';
+
+const { content } = Astro.props;
+
+---
+
+<Layout title={`${content.title} - Christopher Ehrlich`}>
+  <p>in BlogLayout</p>
+  <p>Post title {content.title}</p>
+  <article class='bg-red-500'>
+    <slot />
+  </article>
+</Layout>
