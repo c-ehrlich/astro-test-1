@@ -1,37 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Christopher Ehrlich">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			Check out the <code>src/pages</code> directory to get started.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Chat"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		<h1>A quick intro</h1>
+		<p>After graduating from Central St Martins I worked for designers such as <a href='https://aitorthroup.com/'>Aitor
+				Throup</a> and <a href='https://www.janjanvanessche.com/'>Jan-Jan van Essche</a>, and then became a lecturer at
+			the <a href='https://www.ufg.at/'>University of Art and Design in Linz</a>.</p>
+		<p>During the Coronavirus pandemic I rediscovered my childhood interest
+			in programming, and started teaching myself Full Stack development.</p>
+		<p>I currently work for <a href='https://www.kompany.at'>kompany</a>, a subsidiary of <a
+				href='https://www.moodys.com/'>Moody's</a>.</p>
+		<p>Outside of work, I am passionate about creating tools, teaching, language learning, and clothesmaking.</p>
 	</main>
 </Layout>
 
@@ -62,10 +43,12 @@ import Card from "../components/Card.astro";
 	}
 
 	@keyframes pulse {
+
 		0%,
 		100% {
 			background-position-y: 0%;
 		}
+
 		50% {
 			background-position-y: 80%;
 		}
@@ -86,6 +69,7 @@ import Card from "../components/Card.astro";
 		border-radius: 4px;
 		padding: 0.15em 0.25em;
 	}
+
 	.link-card-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
