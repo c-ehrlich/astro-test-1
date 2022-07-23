@@ -1,0 +1,37 @@
+---
+import '@fontsource/quicksand/700.css';
+
+export interface Props {
+  tags: string[]
+}
+
+const { tags } = Astro.props as Props;
+---
+
+<div class='blog-tags'>
+  <!-- TODO create /blog/tags/[tag] -->
+  {tags.map(tag => <a href='/todo' class='blog-tag bgglow'>{tag}</a>)}
+</div>
+
+<style>
+  .blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 8px;
+  }
+
+  .blog-tag {
+    border: 2px solid;
+    border-radius: 3px;
+    padding: 0px 4px;
+    font-size: 11px;
+    font-family: Quicksand;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-link);
+  }
+
+  .blog-tag:hover {
+    text-decoration: none;
+  }
+</style>

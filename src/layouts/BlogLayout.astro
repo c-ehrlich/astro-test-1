@@ -1,14 +1,24 @@
 ---
 import Layout from './Layout.astro';
+import TagList from '../components/TagList.astro';
+import { getFullDate } from '../util/date';
 
-const { content } = Astro.props;
+export interface Props {
+  content: {
+    title: string;
+    publishedDate: string;
+    tags: string[];
+  }
+}
 
+const { content } = Astro.props as Props;
 ---
 
-<Layout title={`${content.title} - Christopher Ehrlich`}>
-  <p>in BlogLayout</p>
-  <p>Post title {content.title}</p>
-  <article class='bg-red-500'>
+<Layout title={content.title}>
+  <h1 class='page-header'>{content.title}</h1>
+  <TagList tags={content.tags} />
+  <span>{getFullDate(content.publishedDate)}</span>
+  <article>
     <slot />
   </article>
 </Layout>
