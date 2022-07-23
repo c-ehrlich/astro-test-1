@@ -1,5 +1,7 @@
 ---
+import BlogPostListItem from '../components/BlogPostListItem.astro'
 import Layout from '../layouts/Layout.astro'
+
 const unsortedPosts = await Astro.glob('./blog/*.md')
 const posts = unsortedPosts.sort((a, b) => {
   return (
@@ -12,8 +14,9 @@ const posts = unsortedPosts.sort((a, b) => {
   <div>
     <h1>blog</h1>
     {
-    posts.map(post => (
-    <div>{post.frontmatter.title}</div>
+    posts.map(({frontmatter, url}) => (
+    <BlogPostListItem title={frontmatter.title} publishedDate={frontmatter.publishedDate} tags={frontmatter.tags}
+      url={url} />
     ))
     }
   </div>
