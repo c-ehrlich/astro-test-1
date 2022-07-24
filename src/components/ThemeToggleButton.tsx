@@ -16,9 +16,22 @@ function ThemeToggleButton() {
   });
 
   function handleThemeChange() {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', newTheme);
-    setTheme(newTheme);
+    const oppositeTheme = theme === 'light' ? 'dark' : 'light';
+
+    const matchesDarkTheme = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
+
+    if (
+      (matchesDarkTheme && oppositeTheme === 'dark') ||
+      (!matchesDarkTheme && oppositeTheme === 'light')
+    ) {
+      localStorage.removeItem('theme');
+    } else {
+      localStorage.setItem('theme', oppositeTheme);
+    }
+
+    setTheme(oppositeTheme);
   }
 
   useEffect(() => {
