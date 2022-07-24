@@ -47,6 +47,7 @@ const { title } = Astro.props as Props;
 
     <style>
       :root {
+        color-theme: light;
         --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
         --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 2.5rem);
         --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
@@ -58,6 +59,7 @@ const { title } = Astro.props as Props;
       }
 
       :root.theme-dark {
+        color-theme: dark;
         --color-text: rgb(229, 231, 235);
         --color-bg: rgb(16, 12, 8);
         --color-link: rgb(100, 202, 202);
