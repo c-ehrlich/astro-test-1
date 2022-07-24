@@ -1,11 +1,11 @@
 // https://github.com/withastro/docs/blob/main/src/components/Header/ThemeToggleButton.tsx
 // https://github.com/withastro/docs/blob/main/src/components/Header/ThemeToggleButton.css
 
-import type { FunctionalComponent } from 'preact';
-import { useState, useEffect } from 'preact/hooks';
-// import './ThemeToggleButton.css';
+import { useState, useEffect } from 'react';
+import './ThemeToggleButton.css';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 
-const ThemeToggleButton: FunctionalComponent = () => {
+function ThemeToggleButton() {
   const [theme, setTheme] = useState(() => {
     if (import.meta.env.SSR) {
       return undefined;
@@ -15,10 +15,15 @@ const ThemeToggleButton: FunctionalComponent = () => {
       : 'light';
   });
 
-  console.log('theme:', theme);
+  function handleThemeChange() {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme);
+    setTheme(newTheme);
+  }
 
   useEffect(() => {
     const root = document.documentElement;
+
     if (theme === 'light') {
       root.classList.remove('theme-dark');
     } else {
@@ -27,16 +32,28 @@ const ThemeToggleButton: FunctionalComponent = () => {
   }, [theme]);
 
   return (
-    <div class='theme-toggle'>
-      <button
-        onClick={() =>
-          setTheme((theme) => (theme === 'dark' ? 'light' : 'dark'))
-        }
+    <AnimatePresence exitBeforeEnter initial={false}>
+      <motion.button
+        key={theme === 'light' ? 'light-icon' : 'dark-icon'}
+        class='ThemeToggleButton'
+        onClick={handleThemeChange}
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 20, opacity: 0 }}
+        transition={{ duration: 0.2 }}
       >
-        theme: {theme}
-      </button>
-    </div>
+        {theme === 'light' ? '🌤️' : '🌙'}
+      </motion.button>
+    </AnimatePresence>
   );
-};
+}
 
-export default ThemeToggleButton;
+function ThemeToggleButtonContainer() {
+  return (
+    <AnimateSharedLayout>
+      <ThemeToggleButton />
+    </AnimateSharedLayout>
+  );
+}
+
+export default ThemeToggleButtonContainer;
