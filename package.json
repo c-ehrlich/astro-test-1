@@ -10,9 +10,9 @@
   },
   "devDependencies": {
     "@astrojs/preact": "^0.5.2",
-    "@astrojs/tailwind": "^0.2.4",
     "astro": "^1.0.0-beta.73",
-    "preact": "^10.6.5"
+    "preact": "^10.6.5",
+    "prettier-plugin-astro": "^0.1.2"
   },
   "dependencies": {
     "@fontsource/noto-serif": "^4.5.9",
