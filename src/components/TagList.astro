@@ -1,8 +1,6 @@
 ---
-import '@fontsource/quicksand/700.css';
-
 export interface Props {
-  tags: string[]
+  tags: string[];
 }
 
 const { tags } = Astro.props as Props;
@@ -10,7 +8,11 @@ const { tags } = Astro.props as Props;
 
 <div class='blog-tags'>
   <!-- TODO create /blog/tags/[tag] -->
-  {tags.map(tag => <a href='/todo' class='blog-tag bgglow'>{tag}</a>)}
+  {tags.map((tag) => (
+    <a href='/todo' class='blog-tag bgglow'>
+      {tag}
+    </a>
+  ))}
 </div>
 
 <style>

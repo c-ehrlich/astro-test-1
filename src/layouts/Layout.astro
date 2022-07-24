@@ -2,78 +2,76 @@
 import App from './_App.astro';
 import Avatar from '/img/avatar.jpeg';
 import ThemeToggleButton from '../components/ThemeToggleButton';
-import '@fontsource/roboto-condensed/700.css';
-import '@fontsource/noto-serif/700.css';
 
 export interface Props {
-	title?: string;
+  title?: string;
 }
 
 const { title } = Astro.props as Props;
 ---
 
 <App title={title}>
-	<div class='container'>
-		<div class='header'>
-			<img class='avatar' src={Avatar} alt='Christopher Ehrlich Avatar' />
-			<ThemeToggleButton client:visible />
-		</div>
-		<h1 class='hello-text'>Hi, I'm Christopher.</h1>
-		<nav>
-			<ul class='nav-links'>
-				<li class='nav-link'><a href='/'>Home</a></li>
-				<li class='nav-link'><a href='/projects'>Projects</a></li>
-				<li class='nav-link'><a href='/blog'>Blog</a></li>
-				<li class='nav-link'><a href='/contact'>Contact</a></li>
-			</ul>
-		</nav>
-		<slot />
-	</div>
+  <div class='container'>
+    <div class='header'>
+      <img class='avatar' src={Avatar} alt='Christopher Ehrlich Avatar' />
+      <ThemeToggleButton client:visible />
+    </div>
+    <h1 class='hello-text'>Hi, I'm Christopher.</h1>
+    <nav>
+      <ul class='nav-links'>
+        <li class='nav-link'><a href='/'>Home</a></li>
+        <li class='nav-link'><a href='/projects'>Projects</a></li>
+        <li class='nav-link'><a href='/blog'>Blog</a></li>
+        <li class='nav-link'><a href='/contact'>Contact</a></li>
+      </ul>
+    </nav>
+    <slot />
+  </div>
 </App>
 
 <style>
-	.container {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-		max-width: 960px;
-		padding: 32px 16px 16px 16px;
-	}
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 960px;
+    padding: 32px 16px 16px 16px;
+  }
 
-	.header {
-		display: flex;
-		justify-content: space-between;
-	}
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
 
-	.avatar {
-		border-radius: 50%;
-		width: 128px;
-		height: 128px;
-	}
+  .avatar {
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+  }
 
-	.hello-text {
-		font-family: 'Noto Serif';
-		font-weight: 700;
-		font-size: var(--font-size-xl);
-		margin-top: 24px;
-		margin-bottom: 24px;
-	}
+  .hello-text {
+    font-family: 'Noto Serif';
+    font-weight: 700;
+    font-size: var(--font-size-xl);
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
 
-	.nav-links {
-		margin: 0;
-		padding: 0;
-		list-style-type: none;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 16px;
-		padding: none;
-	}
+  .nav-links {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: none;
+  }
 
-	.nav-link {
-		font-family: 'Roboto Condensed';
-		font-weight: 700;
-		text-transform: uppercase;
-		list-style: none;
-		font-size: 20px;
-	}
+  .nav-link {
+    font-family: 'Roboto Condensed';
+    font-weight: 700;
+    text-transform: uppercase;
+    list-style: none;
+    font-size: 20px;
+  }
 </style>

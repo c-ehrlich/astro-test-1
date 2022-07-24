@@ -1,34 +1,43 @@
 ---
-import BlogPostListItem from '../components/BlogPostListItem.astro'
-import Layout from '../layouts/Layout.astro'
+import BlogPostListItem from '../components/BlogPostListItem.astro';
+import Layout from '../layouts/Layout.astro';
 
-const unsortedPosts = await Astro.glob('./blog/*.md')
+const unsortedPosts = await Astro.glob('./blog/*.md');
 const posts = unsortedPosts.sort((a, b) => {
   return (
-    new Date(b.frontmatter.publishedDate).valueOf() - new Date(a.frontmatter.publishedDate).valueOf()
-  )
-})
+    new Date(b.frontmatter.publishedDate).valueOf() -
+    new Date(a.frontmatter.publishedDate).valueOf()
+  );
+});
 ---
 
 <Layout title='Blog'>
   <div>
     <h1 class='page-header'>✍🏼 Blog posts on my experience as a developer</h1>
-    <p>As a strong believer in <a href='https://www.swyx.io/learn-in-public/'>Learning in Public</a> I try to both
-      solidify my learning and share with others by writing about my experiences. I generally write about problems I
-      come across and how I solved them. I'll occassionally also write about my personal experiences of making progress
-      as a developer, and thoughts about how my experiences as a developer overlap with my previous experiences as a
-      designer and teacher.</p>
-    <p>If you spot an error, or have any comments, suggestions or questions about what I've written, please <a
-        href='/contact'>contact me</a>.
-      I'd love to hear from you.</p>
+    <p>
+      As a strong believer in <a href='https://www.swyx.io/learn-in-public/'
+        >Learning in Public
+      </a> I try to both solidify my learning and share with others by writing about
+      my experiences. I generally write about problems I come across and how I solved
+      them. I'll occassionally also write about my personal experiences of making
+      progress as a developer, and thoughts about how my experiences as a developer
+      overlap with my previous experiences as a designer and teacher.
+    </p>
+    <p>
+      If you spot an error, or have any comments, suggestions or questions about
+      what I've written, please <a href='/contact'>contact me</a>. I'd love to
+      hear from you.
+    </p>
     <p>📡 Feed: (todo)</p>
     <hr class='hr-m24' />
-    {
-    posts.map(({frontmatter, url}) =>
-    <BlogPostListItem title={frontmatter.title} publishedDate={frontmatter.publishedDate} tags={frontmatter.tags}
-      url={url} />
-    )
-    }
+    {posts.map(({ frontmatter, url }) => (
+      <BlogPostListItem
+        title={frontmatter.title}
+        publishedDate={frontmatter.publishedDate}
+        tags={frontmatter.tags}
+        url={url}
+      />
+    ))}
   </div>
 </Layout>
 
