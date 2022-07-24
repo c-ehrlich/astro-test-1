@@ -4,6 +4,7 @@
 [x] create project gallery
 [x] create miniproject gallery
 [x] add react query tag to anket
+[x] container spacing
 [ ] create /blog/tag/[tag]
   [*] https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
   [ ] project tags should also be links! check how i implemented in current version

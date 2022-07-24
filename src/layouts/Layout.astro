@@ -11,31 +11,42 @@ const { title } = Astro.props as Props;
 ---
 
 <App title={title}>
-  <div class='container'>
-    <div class='header'>
-      <img class='avatar' src={Avatar} alt='Christopher Ehrlich Avatar' />
-      <ThemeToggleButton client:visible />
+  <div class='container-outer'>
+    <div class='container-inner'>
+      <div class='header'>
+        <img class='avatar' src={Avatar} alt='Christopher Ehrlich Avatar' />
+        <ThemeToggleButton client:visible />
+      </div>
+      <h1 class='hello-text'>Hi, I'm Christopher.</h1>
+      <nav>
+        <ul class='nav-links'>
+          <li class='nav-link'><a href='/'>Home</a></li>
+          <li class='nav-link'><a href='/projects'>Projects</a></li>
+          <li class='nav-link'><a href='/blog'>Blog</a></li>
+          <li class='nav-link'><a href='/contact'>Contact</a></li>
+        </ul>
+      </nav>
+      <slot />
     </div>
-    <h1 class='hello-text'>Hi, I'm Christopher.</h1>
-    <nav>
-      <ul class='nav-links'>
-        <li class='nav-link'><a href='/'>Home</a></li>
-        <li class='nav-link'><a href='/projects'>Projects</a></li>
-        <li class='nav-link'><a href='/blog'>Blog</a></li>
-        <li class='nav-link'><a href='/contact'>Contact</a></li>
-      </ul>
-    </nav>
-    <slot />
   </div>
 </App>
 
 <style>
-  .container {
+  .container-outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom: 64px;
+    padding: 32px 16px 16px 16px;
+  }
+
+  .container-inner {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
     max-width: 960px;
-    padding: 32px 16px 16px 16px;
   }
 
   .header {
