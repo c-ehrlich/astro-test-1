@@ -43,7 +43,6 @@ const { title } = Astro.props as Props;
 	.header {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 16px;
 	}
 
 	.avatar {
@@ -56,9 +55,12 @@ const { title } = Astro.props as Props;
 		font-family: 'Noto Serif';
 		font-weight: 700;
 		font-size: var(--font-size-xl);
+		margin-top: 24px;
+		margin-bottom: 24px;
 	}
 
 	.nav-links {
+		margin: 0;
 		padding: 0;
 		list-style-type: none;
 		display: flex;
