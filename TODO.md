@@ -8,6 +8,7 @@
 [x] Light/dark mode should persist
 [x] Light/dark mode framer sun thing
 [x] Same page width on all pages (contact is narrow bc content doesn't fill screen)
+[x] BUG: Content jumps on theme change
 [ ] create /blog/tag/[tag]
   [*] https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
   [ ] project tags should also be links! check how i implemented in current version

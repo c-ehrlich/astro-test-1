@@ -1,7 +1,6 @@
 ---
 import App from './_App.astro';
 import Avatar from '/img/avatar.jpeg';
-import ThemeToggleButton from '../components/ThemeToggleButton';
 
 export interface Props {
   title?: string;
@@ -13,10 +12,7 @@ const { title } = Astro.props as Props;
 <App title={title}>
   <div class='container-outer'>
     <div class='container-inner'>
-      <div class='header'>
-        <img class='avatar' src={Avatar} alt='Christopher Ehrlich Avatar' />
-        <ThemeToggleButton client:visible />
-      </div>
+      <img class='avatar' src={Avatar} alt='Christopher Ehrlich Avatar' />
       <h1 class='hello-text'>Hi, I'm Christopher.</h1>
       <nav>
         <ul class='nav-links'>
