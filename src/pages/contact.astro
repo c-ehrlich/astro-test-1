@@ -1,12 +1,22 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title='Contact'>
   <h2 class='page-header'>👋 You can contact me at:</h2>
-  <ul>
+  <ul class='contact-list'>
     <li><a href='mailto:ehrlich.christopher@gmail.com'>Email</a></li>
     <li><a href='https://github.com/c-ehrlich'>GitHub</a></li>
-    <li><a href='https://discordapp.com/channels/@me/190543707592720384'>Discord (cje#1138)</a></li>
+    <li>
+      <a href='https://discordapp.com/channels/@me/190543707592720384'
+        >Discord (cje#1138)
+      </a>
+    </li>
   </ul>
 </Layout>
+
+<style>
+  .contact-list {
+    margin: 0;
+  }
+</style>
