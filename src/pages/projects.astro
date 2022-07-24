@@ -1,8 +1,59 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import ProjectCard from '../components/ProjectCard.astro';
+import Layout from '../layouts/Layout.astro';
+
+export interface ProjectFrontmatter {
+  title: string;
+  description: string;
+  publishedDate: string;
+  tags: string[];
+  image: string;
+  github?: string;
+  deployed?: string;
+  video?: string;
+}
+
+const unsortedProjects = await Astro.glob<ProjectFrontmatter>(
+  '../resource/project/*.md'
+);
+const projects = unsortedProjects.sort((a, b) => {
+  return (
+    new Date(b.frontmatter.publishedDate).valueOf() -
+    new Date(a.frontmatter.publishedDate).valueOf()
+  );
+});
 ---
 
 <Layout title='Projects'>
   <h1 class='page-header'>🤖 Here are some of my projects.</h1>
-  <p>I'm using free instances of Vercel, Amazon RDS, Heroku, etc. so please be patient with them 😃</p>
+  <!-- <p class='page-text'>
+    TODO come up with some text to put here...
+  </p> -->
+  <div class='project-list'>
+    {projects.map(({ frontmatter }) => (
+      <ProjectCard
+        title={frontmatter.title}
+        description={frontmatter.description}
+        image={frontmatter.image}
+        tags={frontmatter.tags}
+        publishedDate={frontmatter.publishedDate}
+        github={frontmatter.github}
+        deployed={frontmatter.deployed}
+        video={frontmatter.video}
+      />
+    ))}
+  </div>
 </Layout>
+
+<style>
+  .page-text {
+    margin-top: 0;
+  }
+
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 64px;
+  }
+</style>
