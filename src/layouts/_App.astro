@@ -62,6 +62,10 @@ const { title } = Astro.props as Props;
         border-color: var(--color-link);
       }
 
+      :global(a:hover) {
+        text-decoration: underline;
+      }
+
       :global(h2) {
         font-size: var(--font-size-lg);
       }

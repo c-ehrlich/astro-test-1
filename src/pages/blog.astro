@@ -30,18 +30,26 @@ const posts = unsortedPosts.sort((a, b) => {
     </p>
     <p>📡 Feed: (todo)</p>
     <hr class='hr-m24' />
-    {posts.map(({ frontmatter, url }) => (
-      <BlogPostListItem
-        title={frontmatter.title}
-        publishedDate={frontmatter.publishedDate}
-        tags={frontmatter.tags}
-        url={url}
-      />
-    ))}
+    <div class='blog-post-list'>
+      {posts.map(({ frontmatter, url }) => (
+        <BlogPostListItem
+          title={frontmatter.title}
+          publishedDate={frontmatter.publishedDate}
+          tags={frontmatter.tags}
+          url={url}
+        />
+      ))}
+    </div>
   </div>
 </Layout>
 
 <style>
+  .blog-post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
   .hr-m24 {
     color: red !important;
     /* border-top: 1px solid rgb(68, 68, 68); */
