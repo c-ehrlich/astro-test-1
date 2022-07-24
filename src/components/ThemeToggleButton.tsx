@@ -35,7 +35,7 @@ function ThemeToggleButton() {
     <AnimatePresence exitBeforeEnter initial={false}>
       <motion.button
         key={theme === 'light' ? 'light-icon' : 'dark-icon'}
-        class='ThemeToggleButton'
+        className='ThemeToggleButton'
         onClick={handleThemeChange}
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
