@@ -1,0 +1,33 @@
+---
+import TagList from './TagList.astro';
+
+export interface DemoProjectFrontMatter {
+  title: string;
+  description: string;
+  publishedDate: string;
+  tags: string[];
+  github: string;
+}
+
+const { title, description, tags, github } =
+  Astro.props as DemoProjectFrontMatter;
+---
+
+<div>
+  <p class='demoproject-text'>
+    <a class='demoproject-title' href={github}>{title}</a> - <span
+      >{description}
+    </span>
+  </p>
+  <TagList tags={tags} />
+</div>
+
+<style>
+  .demoproject-text {
+    margin-bottom: 4px;
+  }
+
+  .demoproject-title {
+    font-weight: 600;
+  }
+</style>

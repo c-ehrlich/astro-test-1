@@ -1,7 +1,17 @@
 ---
-import { ProjectFrontmatter } from '../pages/projects.astro';
 import { getMonthYearDate } from '../util/date';
 import TagList from './TagList.astro';
+
+export interface ProjectFrontmatter {
+  title: string;
+  description: string;
+  publishedDate: string;
+  tags: string[];
+  image: string;
+  github: string;
+  deployed?: string;
+  video?: string;
+}
 
 const {
   title,
@@ -98,7 +108,6 @@ const formattedDate = getMonthYearDate(publishedDate);
   .project-description {
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: 300;
   }
 
   .project-links {

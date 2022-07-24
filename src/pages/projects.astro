@@ -1,22 +1,26 @@
 ---
-import ProjectCard from '../components/ProjectCard.astro';
+import DemoProjectCard, {
+  DemoProjectFrontMatter,
+} from '../components/DemoProjectCard.astro';
+import ProjectCard, {
+  ProjectFrontmatter,
+} from '../components/ProjectCard.astro';
 import Layout from '../layouts/Layout.astro';
-
-export interface ProjectFrontmatter {
-  title: string;
-  description: string;
-  publishedDate: string;
-  tags: string[];
-  image: string;
-  github?: string;
-  deployed?: string;
-  video?: string;
-}
 
 const unsortedProjects = await Astro.glob<ProjectFrontmatter>(
   '../resource/project/*.md'
 );
 const projects = unsortedProjects.sort((a, b) => {
+  return (
+    new Date(b.frontmatter.publishedDate).valueOf() -
+    new Date(a.frontmatter.publishedDate).valueOf()
+  );
+});
+
+const unsortedDemoProjects = await Astro.glob<DemoProjectFrontMatter>(
+  '../resource/demoproject/*.md'
+);
+const demoProjects = unsortedDemoProjects.sort((a, b) => {
   return (
     new Date(b.frontmatter.publishedDate).valueOf() -
     new Date(a.frontmatter.publishedDate).valueOf()
@@ -43,6 +47,23 @@ const projects = unsortedProjects.sort((a, b) => {
       />
     ))}
   </div>
+  <h1 class='page-header mt-64'>⚙️ ...and here are some bits and bobs.</h1>
+  <p class='m-0'>
+    I&apos;m always interested in trying new technologies and expanding my
+    understanding of the ones I am already using. These aren&apos;t quite full
+    projects, but a collection of demo projects, tests and experiments. Most
+    have READMEs, some have live demos, all have the source code 😃
+  </p>
+  <div class='demoprojects-list'>
+    {demoProjects.map(({ frontmatter }) => (
+      <DemoProjectCard
+        title={frontmatter.title}
+        description={frontmatter.description}
+        tags={frontmatter.tags}
+        github={frontmatter.github}
+      />
+    ))}
+  </div>
 </Layout>
 
 <style>
@@ -55,5 +76,13 @@ const projects = unsortedProjects.sort((a, b) => {
     flex-direction: column;
     width: 100%;
     gap: 64px;
+  }
+
+  .mt-64 {
+    margin-top: 64px;
+  }
+
+  .m-0 {
+    margin: 0px;
   }
 </style>
